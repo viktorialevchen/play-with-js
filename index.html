@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Игра hidden object.</title>
+
+  <style>
+    .container {
+      position: relative;
+      display: inline-block;
+    }
+    .img {
+      height: 40rem;
+      width: 93.4rem;
+      display: block;
+    }
+    .orange {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgb(255, 176, 30);
+      height: 15rem;
+      width: 7.4rem;
+      border-radius: 0.5rem;
+      opacity: 0.8;
+      padding: 1rem;
+      margin-left: 0.5rem;
+      top: 0rem;
+    }
+    .orange h1 {
+      font-size: 1.2rem;
+    }
+    .found {
+      text-decoration: line-through;
+      color: rgb(0, 0, 0);
+    }
+    .object {
+      position: absolute;
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+    }
+    .apple {
+      width: 1rem;
+      height: 1rem;
+      top: 11.5rem;
+      left: 70rem;
+    }
+    .img2 {
+      height: 1rem;
+      width: 1rem;
+      top: 30rem;
+      left: 4rem;
+    }
+    .img3 {
+      height: 1rem;
+      width: 1rem;
+      top: 25rem;
+      left: 89rem;
+    }
+    .img4 {
+      width: 1rem;
+      height: 1rem;
+      top: 11.9rem;
+      left: 52rem;
+    }
+    .score {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="img" src="https://srisovki.one/wp-content/uploads/2021/09/3-9-730x657.jpg" alt="" />
+
+  
+    <div class="orange">
+      <h1>Найди:</h1>
+      <h1 id="task-apple">1. Яблоко</h1>
+      <h1 id="task-grib">2. Гриб</h1>
+      <h1 id="task-babochka">3. Бабочка</h1>
+      <h1 id="task-list">4. Листочек</h1>
+      <div class="score" id="score">Очки: 0</div>
+    </div>
+
+  
+    <img id="apple" class="object apple" src="https://www.pngmart.com/files/5/Red-Apple-PNG-Image.png" alt="яблоко">
+    <img id="grib" class="object img2" src="https://foni.papik.pro/uploads/posts/2024-10/foni-papik-pro-v9sx-p-kartinki-mukhomor-dlya-detei-na-prozrachno-7.png" alt="гриб">
+    <img id="babochka" class="object img3" src="https://pngimg.com/uploads/butterfly/butterfly_PNG1062.png" alt="бабочка">
+    <img id="list" class="object img4" src="https://papik.pro/uploads/posts/2023-01/thumbs/1674064759_papik-pro-p-listya-risunok-23.png" alt="листочек">
+  </div>
+
+  <script>
+    let score = 0;
+    const scoreElement = document.getElementById("score");
+
+    function foundObject(id, taskId) {
+      document.getElementById(id).style.display = "none";
+      document.getElementById(taskId).classList.add("found");
+      score += 1;
+      scoreElement.textContent = "Очки: " + score;
+    }
+
+    document.getElementById("apple").onclick = () => foundObject("apple", "task-apple");
+    document.getElementById("grib").onclick = () => foundObject("grib", "task-grib");
+    document.getElementById("babochka").onclick = () => foundObject("babochka", "task-babochka");
+    document.getElementById("list").onclick = () => foundObject("list", "task-list");
+  </script>
+</body>
+</html>
